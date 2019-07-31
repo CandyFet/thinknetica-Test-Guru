@@ -84,7 +84,7 @@ UserTest.create!([
                    { user_id: users.first.id, test_id: tests[3].id },
                    { user_id: users.first.id, test_id: tests.last.id },
                    { user_id: users[1].id, test_id: tests.first.id },
-                   { user_id: users[1].id, test_id: test[1].id },
+                   { user_id: users[1].id, test_id: tests[1].id },
                    { user_id: users.last.id, test_id: tests.first.id }
                  ])
 
