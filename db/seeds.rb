@@ -77,14 +77,11 @@ users = User.create!([
                        { login: 'user2@example.com', name: 'User2', password: '123' }
                      ])
 
-UserTest.create!([
-                   { user_id: users.first.id, test_id: tests.first.id },
-                   { user_id: users.first.id, test_id: tests[1].id },
-                   { user_id: users.first.id, test_id: tests[2].id },
-                   { user_id: users.first.id, test_id: tests[3].id },
-                   { user_id: users.first.id, test_id: tests.last.id },
-                   { user_id: users[1].id, test_id: tests.first.id },
-                   { user_id: users[1].id, test_id: tests[1].id },
-                   { user_id: users.last.id, test_id: tests.first.id }
-                 ])
+users.each do |user|
+  tests.each do |test|
+    user.tests.push(test)
+    user.save
+  end
+end
+
 
