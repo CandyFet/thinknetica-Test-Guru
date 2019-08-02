@@ -1,7 +1,7 @@
-class CreateUserTestsJoinTable < ActiveRecord::Migration[5.2]
+class CreateUsersTestsJoinTable < ActiveRecord::Migration[5.2]
   def change
     create_join_table :users, :tests do |t|
-      t.index [:user_id, :test_id], unique: true
+       t.index [:user_id, :creator_id]
       # t.index [:test_id, :user_id]
     end
   end

@@ -16,58 +16,58 @@ categories = Category.create!([
                               ])
 
 tests = Test.create!([
-                       { title: 'First lesson', level: 1, category_id: categories.first.id },
-                       { title: 'Second lesson', level: 2, category_id: categories.first.id },
-                       { title: 'First lesson', level: 1, category_id: categories[1].id },
-                       { title: 'First lesson', level: 1, category_id: categories[2].id },
-                       { title: 'First lesson', level: 1, category_id: categories.last.id }
+                       { title: 'First lesson', level: 1, category: categories.first },
+                       { title: 'Second lesson', level: 2, category: categories.first },
+                       { title: 'First lesson', level: 1, category: categories[1]},
+                       { title: 'First lesson', level: 1, category: categories[2] },
+                       { title: 'First lesson', level: 1, category: categories.last }
                      ])
 
 questions = Question.create!([
-                               { body: 'What is tag?', test_id: tests.first.id },
-                               { body: 'Meaning of <p> tag', test_id: tests.first.id },
-                               { body: 'Meaning of <ul> tag', test_id: tests[1].id },
-                               { body: 'Meaning of <ol> tag', test_id: tests[1].id },
-                               { body: 'How to print a string in console?', test_id: tests[2].id },
+                               { body: 'What is tag?', test: tests.first },
+                               { body: 'Meaning of <p> tag', test: tests.first },
+                               { body: 'Meaning of <ul> tag', test: tests[1] },
+                               { body: 'Meaning of <ol> tag', test: tests[1] },
+                               { body: 'How to print a string in console?', test: tests[2] },
                                { body: 'What is MVC?', test_id: tests[3].id },
-                               { body: 'Why we need to use CSS?', test_id: tests.last.id }
+                               { body: 'Why we need to use CSS?', test: tests.last }
                              ])
 
 answers = Answer.create!([
                            {
                              body: 'This is hidden keyword within a web page that define how your web browser must format and display the content',
                              correct: true,
-                             question_id: questions.first.id
+                             question: questions.first
                            },
                            {
                              body: 'Parapgraph',
                              correct: true,
-                             question_id: questions[1].id
+                             question: questions[1]
                            },
                            {
                              body: 'Unordered list',
                              correct: true,
-                             question_id: questions[2].id
+                             question: questions[2]
                            },
                            {
                              body: 'Ordered list',
                              correct: true,
-                             question_id: questions[3].id
+                             question: questions[3]
                            },
                            {
                              body: "Use 'puts' command",
                              correct: true,
-                             question_id: questions[4].id
+                             question: questions[4]
                            },
                            {
                              body: 'Model-View-Controller architectural pattern',
                              correct: true,
-                             question_id: questions[5].id
+                             question: questions[5]
                            },
                            {
                              body: 'We need it to manage position of HTML tags on web-page',
                              correct: true,
-                             question_id: questions.last.id
+                             question: questions.last
                            }
                          ])
 
