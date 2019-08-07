@@ -6,7 +6,7 @@ class Test < ApplicationRecord
 
   def self.names_by_category(category_title)
 
-    Category.find_by_title!(category_title).tests.pluck(:title).reverse
+    Category.find_by_title!(category_title).tests.order(title: :desc).pluck(:title)
 
   end
 end
