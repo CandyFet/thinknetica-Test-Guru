@@ -8,6 +8,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+users = User.create!([
+                         { login: 'admin@example.com', name: 'Admin', password: '123' },
+                         { login: 'user1@example.com', name: 'User1', password: '123' },
+                         { login: 'user2@example.com', name: 'User2', password: '123' }
+                     ])
+
 categories = Category.create!([
                                 { title: 'HTML' },
                                 { title: 'Ruby' },
@@ -16,11 +23,11 @@ categories = Category.create!([
                               ])
 
 tests = Test.create!([
-                       { title: 'First lesson', level: 1, category: categories.first },
-                       { title: 'Second lesson', level: 2, category: categories.first },
-                       { title: 'First lesson', level: 1, category: categories[1]},
-                       { title: 'First lesson', level: 1, category: categories[2] },
-                       { title: 'First lesson', level: 1, category: categories.last }
+                       { title: 'First lesson', level: 1, category: categories.first, user_id: users.first.id },
+                       { title: 'Second lesson', level: 2, category: categories.first, user_id: users.first.id },
+                       { title: 'First lesson', level: 1, category: categories[1], user_id: users.first.id },
+                       { title: 'First lesson', level: 1, category: categories[2], user_id: users.first.id },
+                       { title: 'First lesson', level: 1, category: categories.last, user_id: users.first.id }
                      ])
 
 questions = Question.create!([
@@ -71,11 +78,7 @@ answers = Answer.create!([
                            }
                          ])
 
-users = User.create!([
-                       { login: 'admin@example.com', name: 'Admin', password: '123' },
-                       { login: 'user1@example.com', name: 'User1', password: '123' },
-                       { login: 'user2@example.com', name: 'User2', password: '123' }
-                     ])
+
 
 users.each do |user|
   tests.each do |test|

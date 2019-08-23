@@ -1,12 +1,11 @@
 class Test < ApplicationRecord
-  has_many :test_users, dependent: :destroy
   belongs_to :category
+  belongs_to :user
   has_many :questions, dependent: :destroy
+  has_many :test_users, dependent: :destroy
   has_many :users, through: :test_users
 
   def self.names_by_category(category_title)
-
-    Category.find_by_title!(category_title).tests.order(title: :desc).pluck(:title)
-
+    order(title: :desc).joins(:category).where(categories: { title: category_title }).pluck(:title)
   end
 end
