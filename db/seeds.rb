@@ -23,11 +23,11 @@ categories = Category.create!([
                               ])
 
 tests = Test.create!([
-                       { title: 'First lesson', level: 1, category: categories.first, user_id: users.first.id },
-                       { title: 'Second lesson', level: 2, category: categories.first, user_id: users.first.id },
-                       { title: 'First lesson', level: 1, category: categories[1], user_id: users.first.id },
-                       { title: 'First lesson', level: 1, category: categories[2], user_id: users.first.id },
-                       { title: 'First lesson', level: 1, category: categories.last, user_id: users.first.id }
+                       { title: 'First lesson', level: 1, category: categories.first, creator_id: users.first.id, user_id: users.last.id },
+                       { title: 'Second lesson', level: 2, category: categories.first, creator_id: users.first.id, user_id: users.last.id },
+                       { title: 'First lesson', level: 1, category: categories[1], creator_id: users.first.id, user_id: users.last.id },
+                       { title: 'First lesson', level: 1, category: categories[2], creator_id: users.first.id, user_id: users.last.id },
+                       { title: 'First lesson', level: 1, category: categories.last, creator_id: users.first.id, user_id: users.last.id }
                      ])
 
 questions = Question.create!([
