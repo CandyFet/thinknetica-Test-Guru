@@ -2,7 +2,7 @@ class Answer < ApplicationRecord
   belongs_to :question
 
   validates :body, presence: true
-  validate :validates_amount_of_questions
+  validate :validates_amount_of_questions, on: :create
 
   scope :correct, -> { where(correct: true) }
 
@@ -10,7 +10,7 @@ class Answer < ApplicationRecord
   private
 
   def validates_amount_of_questions
-    errors.add(:body) unless question.answers.size.in?(1..4)
+    errors.add(:body) if question.answers.count >= 4
   end
 
 end
