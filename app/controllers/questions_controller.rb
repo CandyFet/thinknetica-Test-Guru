@@ -3,6 +3,7 @@
 class QuestionsController < ApplicationController
 
   before_action :find_test
+
   def index
     render plain: @test.questions.pluck(:body).join("\n")
   end
@@ -17,6 +18,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    byebug
     @question = @test.questions.create(question_params)
     render 'new' unless @question.errors.empty?
   end
@@ -32,10 +34,13 @@ class QuestionsController < ApplicationController
     @test = Test.find(params[:test_id])
   end
 
+  def find_question
+    @question = Question.find(params[:id])
+  end
+
   def question_params
-    params.require(:question).permit(:body).tap do |question_params|
-      question_params.require(:body)
-    end
+    params.require(:question).permit(:body).require(:body)
+
   end
 
 end
