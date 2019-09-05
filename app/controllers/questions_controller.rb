@@ -2,15 +2,15 @@
 
 class QuestionsController < ApplicationController
 
-  before_action :find_test
+  before_action :find_question, except: %i[index new create]
+  before_action :find_test, only: %i[index new create]
 
   def index
     render plain: @test.questions.pluck(:body).join("\n")
   end
 
   def show
-    question = Question.find_by_id(params[:id])
-    render plain: question.body
+    render plain: @question.body
   end
 
   def new
@@ -18,14 +18,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    byebug
     @question = @test.questions.create(question_params)
     render 'new' unless @question.errors.empty?
   end
 
   def destroy
-    question = Question.find_by_id(params[:id])
-    question.delete
+    @question.delete
   end
 
   private
@@ -39,8 +37,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body).require(:body)
-
+    params.require(:question).permit(:body)
   end
-
 end
