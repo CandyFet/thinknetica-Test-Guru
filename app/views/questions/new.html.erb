@@ -1,5 +1,2 @@
-<h1>Creating a new question</h1>
-<%= form_for @question, url: test_questions_path(@test) do |f| %>
-  <%= f.text_field :body %></br>
-  <%= f.submit 'Create question' %>
-<% end %>
+<h1><%= question_header(@test, 'new') %></h1>
+<%= render 'form' %>

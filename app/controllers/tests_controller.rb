@@ -11,7 +11,7 @@ class TestsController < ApplicationController
   end
 
   def show
-    render inline: '<%= @test.title %>'
+    @questions = @test.questions
   end
 
   private
