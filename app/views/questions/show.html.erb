@@ -1,0 +1,4 @@
+<h1>Test: <%= @test.title %></h1>
+<h2>Question: <%= @question.body %></h2>
+<%= link_to 'Back to questions', test_questions_path(@test) %> |
+<%= link_to 'Edit this question', edit_question_path(@question) %>
