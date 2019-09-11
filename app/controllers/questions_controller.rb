@@ -2,12 +2,8 @@
 
 class QuestionsController < ApplicationController
 
-  before_action :find_question, only: %i[update show edit]
-  before_action :find_test, only: %i[index new create]
-
-  def index
-    @questions = @test.questions
-  end
+  before_action :find_question, only: %i[update show edit destroy]
+  before_action :find_test, only: %i[new create]
 
   def edit
     @test = @question.test
@@ -31,7 +27,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = Question.find(params[:id])
     @question.destroy
 
     redirect_to test_questions_path(@question.test)

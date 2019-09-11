@@ -1,9 +1,21 @@
 # frozen_string_literal: true
 
 module QuestionsHelper
-  ACTION_HEADERS = { 'new' => 'Create new', 'edit' => 'Edit'}.freeze
+  def question_header(question, test)
+    if question.persisted?
+      edit_header(question)
+    elsif question.new_record?
+      new_header(test)
+    end
+  end
 
-  def question_header(test, action)
-    "#{ACTION_HEADERS[action]} #{test.title} question"
+  private
+
+  def edit_header(question)
+    "Edit #{question.test.title} question"
+  end
+
+  def new_header(test)
+    "Create new #{test.title} question"
   end
 end
