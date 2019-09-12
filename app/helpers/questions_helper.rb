@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module QuestionsHelper
-  def question_header(question, test)
+  def question_header(question)
     if question.persisted?
       edit_header(question)
     elsif question.new_record?
-      new_header(test)
+      new_header
     end
   end
 
@@ -15,7 +15,7 @@ module QuestionsHelper
     "Edit #{question.test.title} question"
   end
 
-  def new_header(test)
-    "Create new #{test.title} question"
+  def new_header
+    'Create new question'
   end
 end

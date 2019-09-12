@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
-
   before_action :find_question, only: %i[update show edit destroy]
   before_action :find_test, only: %i[new create]
 
-  def edit
-    @test = @question.test
-  end
+  def edit; end
 
   def show
     @test = @question.test
