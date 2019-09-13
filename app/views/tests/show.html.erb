@@ -1,0 +1,13 @@
+<h1><%= @test.title %></h1>
+<%= link_to 'Back to tests list', tests_path %> |
+<%= link_to 'Create new question', new_test_question_path(@test) %>
+
+<table>
+  <tr>
+    <th>Questions</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+  <%= render @questions %>
+</table>
+<p>Total amount of questions: <%= @questions.count %></p>

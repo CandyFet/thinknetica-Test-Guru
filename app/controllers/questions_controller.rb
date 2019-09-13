@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
+  before_action :find_question, only: %i[update show edit destroy]
+  before_action :find_test, only: %i[new create]
 
-  before_action :find_question, only: %i[update destroy show edit]
-  before_action :find_test, only: %i[index new create]
-
-  def index
-    render plain: @test.questions.pluck(:body).join("\n")
-  end
+  def edit; end
 
   def show
-    render plain: @question.body
+    @test = @question.test
   end
 
   def new
@@ -19,11 +16,17 @@ class QuestionsController < ApplicationController
 
   def create
     @question = @test.questions.create(question_params)
-    render 'new' unless @question.errors.empty?
+    if @question.save
+      redirect_to @test
+    else
+      render 'new'
+    end
   end
 
   def destroy
-    @question.delete
+    @question.destroy
+
+    redirect_to test_path(@question.test)
   end
 
   private
