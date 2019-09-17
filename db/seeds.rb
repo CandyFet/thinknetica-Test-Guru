@@ -10,9 +10,9 @@
 
 
 users = User.create!([
-                         { login: 'admin@example.com', name: 'Admin', password: '123' },
-                         { login: 'user1@example.com', name: 'User1', password: '123' },
-                         { login: 'user2@example.com', name: 'User2', password: '123' }
+                         { login: 'admin@example.com', name: 'Admin', password: '123', email: 'admin@example.com' },
+                         { login: 'user1@example.com', name: 'User1', password: '123', email: 'user1@example.com' },
+                         { login: 'user2@example.com', name: 'User2', password: '123', email: 'user2@example.com' }
                      ])
 
 categories = Category.create!([
