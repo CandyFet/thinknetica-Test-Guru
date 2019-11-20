@@ -7,9 +7,8 @@ Rails.application.routes.draw do
       resources :answers, only: %i[edit show new create destroy], shallow: true
     end
 
-    member do
-      post :start
-    end
+    post :start, on: :member
+
   end
 
   resources :test_passages, only: %i[show update] do
