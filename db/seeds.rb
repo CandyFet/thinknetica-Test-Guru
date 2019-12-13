@@ -10,9 +10,9 @@
 
 
 users = User.create!([
-                         { login: 'admin@example.com', name: 'Admin', password: '123' },
-                         { login: 'user1@example.com', name: 'User1', password: '123' },
-                         { login: 'user2@example.com', name: 'User2', password: '123' }
+                         { login: 'admin@example.com', name: 'Admin', password: '123', email: 'admin@example.com' },
+                         { login: 'user1@example.com', name: 'User1', password: '123', email: 'user1@example.com' },
+                         { login: 'user2@example.com', name: 'User2', password: '123', email: 'user2@example.com' }
                      ])
 
 categories = Category.create!([
@@ -23,11 +23,11 @@ categories = Category.create!([
                               ])
 
 tests = Test.create!([
-                       { title: 'First lesson', level: 1, category: categories.first, creator_id: users.first.id },
-                       { title: 'Second lesson', level: 2, category: categories.first, creator_id: users.first.id },
-                       { title: 'First lesson', level: 1, category: categories[1], creator_id: users.first.id },
-                       { title: 'First lesson', level: 1, category: categories[2], creator_id: users.first.id },
-                       { title: 'First lesson', level: 1, category: categories.last, creator_id: users.first.id }
+                       { title: 'First lesson HTML', level: 1, category: categories.first, creator_id: users.first.id },
+                       { title: 'Second lesson HTML', level: 2, category: categories.first, creator_id: users.first.id },
+                       { title: 'First lesson Ruby', level: 1, category: categories[1], creator_id: users.first.id },
+                       { title: 'First lesson Rails', level: 1, category: categories[2], creator_id: users.first.id },
+                       { title: 'First lesson CSS', level: 1, category: categories.last, creator_id: users.first.id }
                      ])
 
 questions = Question.create!([
@@ -44,37 +44,37 @@ answers = Answer.create!([
                            {
                              body: 'This is hidden keyword within a web page that define how your web browser must format and display the content',
                              correct: true,
-                             question: questions.first
+                             question_id: questions.first.id
                            },
                            {
                              body: 'Parapgraph',
                              correct: true,
-                             question: questions[1]
+                             question_id: questions[1].id
                            },
                            {
                              body: 'Unordered list',
                              correct: true,
-                             question: questions[2]
+                             question_id: questions[2].id
                            },
                            {
                              body: 'Ordered list',
                              correct: true,
-                             question: questions[3]
+                             question_id: questions[3].id
                            },
                            {
                              body: "Use 'puts' command",
                              correct: true,
-                             question: questions[4]
+                             question_id: questions[4].id
                            },
                            {
                              body: 'Model-View-Controller architectural pattern',
                              correct: true,
-                             question: questions[5]
+                             question_id: questions[5].id
                            },
                            {
                              body: 'We need it to manage position of HTML tags on web-page',
                              correct: true,
-                             question: questions.last
+                             question_id: questions.last.id
                            }
                          ])
 
