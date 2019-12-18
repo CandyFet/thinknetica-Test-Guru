@@ -2,7 +2,7 @@
 <p class="nav project"><%= link_to 'TestGuru', root_path %></p>
 <% if logged_in? %>
   <p class="nav user">Welcome, <b><%= current_user.email %></b> Guru</p>
-  <p class="nav logout"><%= link_to 'Logout', logout_path %></p>
+  <p class="nav logout"><%= link_to 'Logout', logout_path, method: :delete %></p>
 <% else %>
   <p class="nav signup"><%= link_to 'Register', signup_path %></p>
   <p class="nav login"><%= link_to 'Login', login_path %></p>

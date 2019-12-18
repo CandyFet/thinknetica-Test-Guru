@@ -11,7 +11,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true,
+                    format: { with: URI::MailTo::EMAIL_REGEXP }
+                    
 
   def tests_by_level(level)
     tests.by_level(level)

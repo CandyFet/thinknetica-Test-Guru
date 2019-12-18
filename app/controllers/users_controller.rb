@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_action :set_last_page
   skip_before_action :authenticate_user!
 
   def new
@@ -10,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to session[:last_page] || root_path
+      session[:last_page] = nil
     else
       render :new
     end

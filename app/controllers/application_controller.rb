@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-    before_action :set_last_page
     before_action :authenticate_user!
 
     helper_method :current_user,
@@ -9,6 +8,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user!
         unless current_user
+            set_last_page
             redirect_to login_path
         end
     end
