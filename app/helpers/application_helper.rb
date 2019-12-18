@@ -12,6 +12,12 @@ module ApplicationHelper
     Date.current.year
   end
 
+  def flash_message
+    flash.map do |key, msg|
+      content_tag :p, msg, id: key, class: 'flash'
+    end.join.html_safe
+  end
+
   private
 
   def project_view_string(creator, project)

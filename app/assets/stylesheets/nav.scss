@@ -1,0 +1,11 @@
+.nav.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45%;
+    position: right;
+}
+
+.nav.user {
+    text-align: right;
+}
