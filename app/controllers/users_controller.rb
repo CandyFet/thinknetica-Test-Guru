@@ -8,8 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to session[:last_page] || root_path
-      session[:last_page] = nil
+      redirect_to cookies.delete[:last_page] || root_path
     else
       render :new
     end
